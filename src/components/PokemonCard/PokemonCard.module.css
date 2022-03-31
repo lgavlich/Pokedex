@@ -1,0 +1,7 @@
+.details {
+  display: flex;
+}
+
+.detailsDescription {
+  margin-left: 50px;
+}

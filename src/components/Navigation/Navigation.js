@@ -1,7 +1,7 @@
 import { NavLink } from "react-router-dom";
 import s from "../Navigation/nav.module.css";
 
-const Navigation = () => (
+export default function Navigation() {
   <nav>
     <NavLink exact to="/" className={s.link} activeClassName={s.activeLink}>
       HomePage
@@ -9,6 +9,5 @@ const Navigation = () => (
     <NavLink to="/movies" className={s.link} activeClassName={s.activeLink}>
       MoviesPage
     </NavLink>
-  </nav>
-);
-export default Navigation;
+  </nav>;
+}
