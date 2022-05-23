@@ -1,34 +1,16 @@
-import { lazy, Suspense } from "react";
-import { Switch, Route, Redirect } from "react-router-dom";
-import Container from "./components/Container/Container.js";
-import AppBar from "./components/AppBar/AppBar.js";
-//const HomePage = lazy(() => import("./views/HomePage/HomePage.js"));
-//const MoviesPage = lazy(() => import("./views/MoviesPage/MoviesPage.js"));
-//const MovieDetailsPage = lazy(() =>
-// import("./views/MovieDetailsPage/MovieDetailsPage.js")
-//);
+import { Routes, Route } from "react-router-dom";
+import AppBar from "./components/AppBar/AppBar";
+import PokemonCard from "./components/PokemonCard/PokemonCard";
+import MoviesPage from "./views/MoviesPage/MoviesPage";
 
 export default function App() {
   return (
-    <Container>
+    <>
       <AppBar />
-      <Suspense fallback={<h1>Loading...</h1>}>
-        <Switch>
-          <Route path="/" exact>
-            <HomePage />
-          </Route>
-
-          <Route path="/movies" exact>
-            <MoviesPage />
-          </Route>
-
-          <Route path="/movies/:movieId">
-            <MovieDetailsPage />
-          </Route>
-
-          <Redirect to="/" />
-        </Switch>
-      </Suspense>
-    </Container>
+      <Routes>
+        <Route path="/" element={<PokemonCard />} />
+        <Route path="/movies" element={<MoviesPage />} />
+      </Routes>
+    </>
   );
 }
