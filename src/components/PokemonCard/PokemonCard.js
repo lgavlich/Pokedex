@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Image from "next/image";
+//import Image from "next/image";
 import PropTypes from "prop-types";
 import { colorPicker } from "../../utils/color";
 import { showPokemonId } from "../../utils/showPokemonId";
@@ -12,7 +12,7 @@ const PokemonCard = ({ pokemon }) => {
       <div className="">
         <div className="">
           <div className={` ${pokemonColor}`}>
-            <Image
+            <img
               width={200}
               height={200}
               className=" "
