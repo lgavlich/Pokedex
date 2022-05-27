@@ -1,0 +1,37 @@
+.container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.pokemon_container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 650px;
+    padding: 10px;
+    color: #2F4F4F;
+    background-color: antiquewhite;
+}
+
+.pokemon_name{
+    flex: 1;
+    text-align: center;
+}
+
+.image{
+    height: 300px;
+        margin: 50px auto;
+}
+.container_info{
+    display: grid;
+        width: 100%;
+        grid-template-columns: 200px 200px 200px;
+        box-sizing: border-box;
+        grid-gap: 5px;
+        justify-content: end;
+}
+
+
+
+
