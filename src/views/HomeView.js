@@ -28,19 +28,23 @@ function HomeView() {
 
     setOffset(offset + limit);
   };
-  useEffect(() => {
-    fetchData();
-  });
 
+  console.log(pokemons);
   useEffect(() => {
-    const grid = document.querySelector(".pokedex");
-    const gridComputedStyle = window.getComputedStyle(grid);
-    const gridColumn = gridComputedStyle
-      .getPropertyValue("grid-template-columns")
-      .split(" ");
-    setGridColumnCount(gridColumn.length);
-  }, []);
+    if(pokemons?.length === 0){
+      fetchData();
+      console.log('work');
+    }
+  },[]);
 
+  // useEffect(() => {
+  //   // const grid = document.querySelector(".pokedex");
+  //   // const gridComputedStyle = window.getComputedStyle(grid);
+  //   const gridColumn = gridComputedStyle
+  //     .getPropertyValue("grid-template-columns")
+  //     .split(" ");
+  //   setGridColumnCount(gridColumn.length);
+  // }, []);
   return (
     <div className={s.container}>
       <h1 className={s.title}>Pokédex</h1>
