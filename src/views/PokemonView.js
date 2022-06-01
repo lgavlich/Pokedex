@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { getPokemon } from "../../services/pokemon-api";
-import getPokemonImage from "../..utils/getPokemonImage";
+import { getPokemon } from "../services/pokemon-api";
+import getPokemonImage from "../utils/getPokemonImage";
 import s from "./PokemonView.module.css";
 
 function PokemonView() {
