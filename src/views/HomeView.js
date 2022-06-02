@@ -8,7 +8,7 @@ const allPokemons = 1126;
 const limit = 50;
 
 function HomeView() {
-  const [gridColumnCount, setGridColumnCount] = useState(1);
+  const [gridColumnCount] = useState(1);
   const [pokemons, setPokemons] = useState([]);
   const [offset, setOffset] = useState(0);
   const [morePokemon, setMorePokemon] = useState(true);
@@ -31,11 +31,11 @@ function HomeView() {
 
   console.log(pokemons);
   useEffect(() => {
-    if(pokemons?.length === 0){
+    if (pokemons?.length === 0) {
       fetchData();
-      console.log('work');
+      console.log("work");
     }
-  },[]);
+  }, []);
 
   // useEffect(() => {
   //   // const grid = document.querySelector(".pokedex");
@@ -47,7 +47,6 @@ function HomeView() {
   // }, []);
   return (
     <div className={s.container}>
-      <h1 className={s.title}>Pokédex</h1>
       <InfiniteScroll
         className={s.pokedex}
         dataLength={pokemons.length}

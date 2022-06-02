@@ -16,7 +16,7 @@ function PokemonCard(icons) {
         src={`${getPokemonImage(icons.sprites)}`}
         alt={`${icons.name}`}
       />
-      <h2 className={s.pokemon_name}>{`${icons.id}. $${icons.name}`}</h2>
+      <h2 className={s.pokemon_name}>{`${icons.id}. ${icons.name}`}</h2>
       <p className={s.pokemon_title}>{`${elTypes.join(" | ")}`}</p>
     </div>
   );
