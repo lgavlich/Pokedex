@@ -59,7 +59,9 @@ function HomeView() {
               justifySelf: "center",
               padding: "15px",
             }}
-          ></div>
+          >
+            <div className="loader"></div>
+          </div>
         }
       >
         {pokemons.map((pokemon) => (

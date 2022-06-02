@@ -8,7 +8,7 @@ function PokemonCard(icons) {
   const elTypes = icons.types.map((typesInfo) => typesInfo.type.name);
   return (
     <div
-      className={`pokemon ${elTypes[0]}`}
+      className={` ${elTypes[0]}`}
       onClick={() => navigate(`/pokemon/${icons.name}`)}
     >
       <img
