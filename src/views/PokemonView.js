@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { getPokemon } from "../services/pokemon-api";
 import getPokemonImage from "../utils/getPokemonImage";
 import s from "./PokemonView.module.css";
@@ -7,6 +7,7 @@ import s from "./PokemonView.module.css";
 function PokemonView() {
   const { name: PokemonName } = useParams();
   const [pokemon, setPokemon] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     async function fetchData() {
@@ -36,6 +37,14 @@ function PokemonView() {
                 {pokemon.name}
                 <span> Nº{String(pokemon.id).padStart(3, 0)}</span>
               </h1>
+              <button
+                className={s.btn}
+                type="button"
+                onClick={() => navigate("/")}
+              >
+                Go back
+              </button>
+              <div className={s.btn_wrapper}></div>
             </div>
             <img
               className={s.image}

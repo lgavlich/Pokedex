@@ -5,10 +5,10 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: rgb(233 233 233);
-    display: flex;
-    flex-direction: column;
-    height: 100%;
+ background: rgba(123, 209, 198, 0.5);
+  
+  
+    
 }
 
 

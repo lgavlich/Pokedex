@@ -38,17 +38,16 @@ function HomeView() {
   }, []);
 
   // useEffect(() => {
-  //   // const grid = document.querySelector(".pokedex");
-  //   // const gridComputedStyle = window.getComputedStyle(grid);
+  //   const grid = document.querySelector(".pokedex");
+  //   const gridComputedStyle = window.getComputedStyle(grid);
   //   const gridColumn = gridComputedStyle
   //     .getPropertyValue("grid-template-columns")
   //     .split(" ");
   //   setGridColumnCount(gridColumn.length);
   // }, []);
   return (
-    <div className={s.container}>
+    <section className={s.pokedex}>
       <InfiniteScroll
-        className={s.pokedex}
         dataLength={pokemons.length}
         next={fetchData}
         hasMore={morePokemon}
@@ -74,7 +73,7 @@ function HomeView() {
           />
         ))}
       </InfiniteScroll>
-    </div>
+    </section>
   );
 }
 export default HomeView;

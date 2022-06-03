@@ -7,10 +7,7 @@ function PokemonCard(icons) {
   const navigate = useNavigate();
   const elTypes = icons.types.map((typesInfo) => typesInfo.type.name);
   return (
-    <div
-      className={` ${elTypes[0]}`}
-      onClick={() => navigate(`/pokemon/${icons.name}`)}
-    >
+    <div className={s.card} onClick={() => navigate(`/pokemon/${icons.name}`)}>
       <img
         className={s.pokemon_img}
         src={`${getPokemonImage(icons.sprites)}`}
