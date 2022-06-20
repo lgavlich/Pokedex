@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
+import { Row } from "react-bootstrap";
 import PokemonCard from "../components/PokemonCard/PokemonCard";
 import { getPokemon, getPokemons } from "../services/pokemon-api";
-import s from "./PokemonView.module.css";
+//import s from "./PokemonView.module.css";
 
 const allPokemons = 1126;
 const limit = 50;
 
 function HomeView() {
-  const [gridColumnCount] = useState(1);
+  // const [gridColumnCount] = useState(1);
   const [pokemons, setPokemons] = useState([]);
   const [offset, setOffset] = useState(0);
   const [morePokemon, setMorePokemon] = useState(true);
@@ -46,32 +47,26 @@ function HomeView() {
   //   setGridColumnCount(gridColumn.length);
   // }, []);
   return (
-    <section className={s.pokedex}>
+    <section>
       <InfiniteScroll
         dataLength={pokemons.length}
         next={fetchData}
         hasMore={morePokemon}
         loader={
-          <div
-            style={{
-              gridColumn: `span ${gridColumnCount}`,
-              justifySelf: "center",
-              padding: "15px",
-            }}
-          >
-            <div className="loader"></div>
-          </div>
+          <div className="mb-4 d-flex justify-content-center align-item-center"></div>
         }
       >
-        {pokemons.map((pokemon) => (
-          <PokemonCard
-            key={pokemon.id}
-            id={pokemon.id}
-            name={pokemon.name}
-            types={pokemon.types}
-            sprites={pokemon.sprites}
-          />
-        ))}
+        <Row>
+          {pokemons.map((pokemon) => (
+            <PokemonCard
+              key={pokemon.id}
+              id={pokemon.id}
+              name={pokemon.name}
+              types={pokemon.types}
+              sprites={pokemon.sprites}
+            />
+          ))}
+        </Row>
       </InfiniteScroll>
     </section>
   );

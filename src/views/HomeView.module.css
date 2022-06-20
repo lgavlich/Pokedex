@@ -5,12 +5,7 @@
     font-size: 60px;
 }
 
-.pokedex {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    grid-gap: 20px;
-    padding-inline-start: 0;
-}
+
 
 .loader {
     border: 10px solid #f3f3f3;
