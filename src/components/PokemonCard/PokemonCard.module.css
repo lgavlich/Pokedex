@@ -35,3 +35,15 @@
     
 }
 
+@media screen and(max-width: 420px) {
+    .card{
+        padding: 20px;
+    }
+    .pokemon_img{
+        height: 120px;
+    }
+    .pokemon_name{
+font-size: 25px;
+    }
+
+}
