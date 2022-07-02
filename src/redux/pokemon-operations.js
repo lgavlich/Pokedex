@@ -2,10 +2,10 @@ import {
   addFavoritePokemonRequest,
   // addFavoritePokemonSuccess,
   // addFavoritePokemonError,
-  // removePokemonRequest,
+  removePokemonRequest,
   // removePokemonSuccess,
   // removePokemonError,
-  // deleteFavoritePokemonRequest,
+  deleteFavoritePokemonRequest,
   // deleteFavoritePokemonSuccess,
   // deleteFavoritePokemonError,
 } from "./pokemon-actions";
@@ -18,18 +18,19 @@ export const addFavoritePokemon = (pokemon) => (dispatch) => {
   //   .catch((error) => dispatch(addFavoritePokemonError(error)));
 };
 
-// export const removePokemon = (name) => (dispatch) => {
-//   dispatch(removePokemonRequest());
+export const removePokemon = (pokemon) => (dispatch) => {
+  dispatch(removePokemonRequest(pokemon));
 
-//   axios
-//     .delete(`/pokemon/${name}`)
-//     .then(() => dispatch(removePokemonSuccess(name)))
-//     .catch((error) => dispatch(removePokemonError(error)));
-// };
-// export const deleteFavoritePokemon = (name, favoritePokemons) => (dispatch) => {
-//   dispatch(deleteFavoritePokemonRequest());
-//   axios
-//     .delete(`/pokemon/${name}`)
-//     .then(() => dispatch(deleteFavoritePokemonSuccess(name, favoritePokemons)))
-//     .catch((error) => dispatch(deleteFavoritePokemonError(error)));
-// };
+  //   axios
+  //     .delete(`/pokemon/${name}`)
+  //     .then(() => dispatch(removePokemonSuccess(name)))
+  //     .catch((error) => dispatch(removePokemonError(error)));
+};
+export const deleteFavoritePokemon =
+  (pokemon, addFavoritePokemon) => (dispatch) => {
+    dispatch(deleteFavoritePokemonRequest(pokemon, addFavoritePokemon));
+    //   axios
+    //     .delete(`/pokemon/${name}`)
+    //     .then(() => dispatch(deleteFavoritePokemonSuccess(name, favoritePokemons)))
+    //     .catch((error) => dispatch(deleteFavoritePokemonError(error)));
+  };
