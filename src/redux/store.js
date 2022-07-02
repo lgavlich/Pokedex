@@ -4,6 +4,9 @@ import {
   combineReducers,
 } from "@reduxjs/toolkit";
 import logger from "redux-logger";
+import storage from 'reduxjs-toolkit-persist/lib/storage';
+import { persistStore, persistCombineReducers } from 'reduxjs-toolkit-persist';
+import autoMergeLevel1 from 'reduxjs-toolkit-persist/lib/stateReconciler/autoMergeLevel1';
 import {
   FLUSH,
   REHYDRATE,
@@ -23,14 +26,25 @@ const middleware = [
   logger,
 ];
 
-const rootReducer = combineReducers({
-  pokemon: pokemonReducer,
+const persistConfig = {
+  key: 'pokedex',
+  version: 1,
+  storage,
+  stateReconciler: autoMergeLevel1,
+};
+
+const _persistedReducer = persistCombineReducers(
+  persistConfig,
+  {
+    pokemon: pokemonReducer,
+  },
+);
+
+
+export const store = configureStore({
+  reducer: _persistedReducer,
+  middleware: (getDefaultMiddleware)=>
+    getDefaultMiddleware({ serializableCheck: false }),
 });
 
-const store = configureStore({
-  reducer: rootReducer,
-  middleware,
-  devTools: process.env.NODE_ENV === "development",
-});
-
-export default store;
+export const persistor = persistStore(store);

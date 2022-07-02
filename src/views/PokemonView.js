@@ -2,12 +2,18 @@ import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { getPokemon } from "../services/pokemon-api";
 import getPokemonImage from "../utils/getPokemonImage";
+import {addFavoritePokemon} from '../redux/pokemon-operations'
+import {useDispatch} from 'react-redux'
+
 import s from "./PokemonView.module.css";
 
 function PokemonView() {
   const { name: PokemonName } = useParams();
   const [pokemon, setPokemon] = useState(null);
+  const dispatch = useDispatch();
   const navigate = useNavigate();
+  // const pokemons = useSelector(getAllPokemons())
+// console.log(pokemons);
 
   useEffect(() => {
     async function fetchData() {
@@ -23,10 +29,12 @@ function PokemonView() {
         stats,
       });
     }
-
     fetchData();
   }, [PokemonName]);
 
+  const addFavorite = (id) => {
+    dispatch(addFavoritePokemon(id))
+  }
   return (
     <>
       {pokemon && (
@@ -78,6 +86,9 @@ function PokemonView() {
                 );
               })}
             </div>
+            <button type="button" onClick={() => addFavorite(pokemon?.id)}>
+              add favorite
+            </button>
           </div>
         </div>
       )}

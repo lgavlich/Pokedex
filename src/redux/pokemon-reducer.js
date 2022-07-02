@@ -1,14 +1,14 @@
-import { combineReducer } from "redux";
+import { combineReducers } from "redux";
 import { createReducer } from "@reduxjs/toolkit";
 import {
-  addFavoritePokemonSuccess,
+  addFavoritePokemonRequest,
   removePokemonSuccess,
   deleteFavoritePokemonSuccess,
   changeFilter,
-} from "/pokemon-actions";
+} from "./pokemon-actions";
 
 const favoritePokemon = createReducer([], {
-  [addFavoritePokemonSuccess]: (state, { payload }) => [...state, payload],
+  [addFavoritePokemonRequest]: (state, { payload }) => [...state, payload],
   [deleteFavoritePokemonSuccess]: (_, { payload }) => payload,
   [removePokemonSuccess]: (state, { payload }) =>
     state.filter(({ name }) => name !== payload),
@@ -18,7 +18,7 @@ const filter = createReducer("", {
   [changeFilter]: (_, { payload }) => payload,
 });
 
-export default combineReducer({
+export default combineReducers({
   favoritePokemon,
   filter,
 });
