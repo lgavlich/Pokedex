@@ -1,13 +1,15 @@
-import { useSelector, useDispatch, useEffect } from "react-redux";
-import Card from "../components/PokemonCard";
-import selectors from "../redux/pokemon-selector";
-import pokemonsOperations from "../..redux/pokemon-operations";
+import { useSelector, useDispatch } from "react-redux";
+import { useEffect } from "react";
+import PokemonCard from "../components/PokemonCard/PokemonCard";
+import getVisiblePokemons from "../redux/pokemon-selector";
+import pokemonsOperations from "../redux/pokemon-operations";
+import { Row, Col } from "react-bootstrap";
 function FavoritePokemonView() {
-  const favoritePokemon = useSelector(selectors.getVisiblePokemons);
+  const favoritePokemon = useSelector(getVisiblePokemons);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    async function addFavoritPokemon() {
+    async function addFavoritePokemon() {
       const parseFavoritePokemon = JSON.parse(
         await localStorage.getItem("favoritePokemon")
       );
@@ -22,7 +24,7 @@ function FavoritePokemonView() {
         );
       }
     }
-    addFavoritPokemon();
+    addFavoritePokemon();
   }, []);
 
   const deletePokemon = (name) =>
@@ -30,14 +32,19 @@ function FavoritePokemonView() {
 
   return (
     <div>
-      {favoritePokemon.map(({ pokemon }) => (
-        <Card
-          key={pokemon.name}
-          pokemon={pokemon}
-          deletePokemon={() => deletePokemon(pokemon)}
-        />
-      ))}
+      <Row>
+        {favoritePokemon.map(({ pokemon }) => (
+          <Col key={pokemon.name}>
+            <PokemonCard
+              key={pokemon.name}
+              pokemon={pokemon}
+              deletePokemon={() => deletePokemon(pokemon)}
+            />
+          </Col>
+        ))}
+      </Row>
     </div>
   );
 }
+
 export default FavoritePokemonView;

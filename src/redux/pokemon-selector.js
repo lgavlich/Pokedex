@@ -1,9 +1,5 @@
-import { createSelector } from "reselect";
+const getAllPokemons = (state) => state.allPokemon.pokemon;
+const getFavoritePokemon = (state) => state.favoritePokemon.pokemon;
 
-export const getAllPokemons = (state) => state.allPokemon.pokemon;
-export const getFavoritePokemon = (state) => state.favoritePokemon.pokemon;
-
-export const getVisiblePokemons = createSelector([
-  getAllPokemons,
-  getFavoritePokemon,
-]);
+const getVisiblePokemons = { getFavoritePokemon, getAllPokemons };
+export default getVisiblePokemons;

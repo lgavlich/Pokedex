@@ -2,7 +2,7 @@ import { Route, Routes } from "react-router-dom";
 
 //import { Suspense } from "react";
 import AppBar from "./components/AppBar/AppBar";
-//import FavoritePokemonView from "./views/FavoritePokemonView";
+import FavoritePokemonView from "./views/FavoritePokemonView";
 import HomeView from "./views/HomeView";
 import PokemonView from "./views/PokemonView";
 
@@ -14,6 +14,7 @@ export default function App() {
       <Routes>
         <Route path="/" exact element={<HomeView />} />
         <Route path="/pokemon/:name" element={<PokemonView />} />
+        <Route path="/pokemon/:id" element={<FavoritePokemonView />} />
       </Routes>
     </>
   );

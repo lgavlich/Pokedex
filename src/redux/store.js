@@ -1,12 +1,12 @@
 import {
   configureStore,
   getDefaultMiddleware,
-  combineReducers,
+  //combineReducers,
 } from "@reduxjs/toolkit";
 import logger from "redux-logger";
-import storage from 'reduxjs-toolkit-persist/lib/storage';
-import { persistStore, persistCombineReducers } from 'reduxjs-toolkit-persist';
-import autoMergeLevel1 from 'reduxjs-toolkit-persist/lib/stateReconciler/autoMergeLevel1';
+import storage from "reduxjs-toolkit-persist/lib/storage";
+import { persistStore, persistCombineReducers } from "reduxjs-toolkit-persist";
+import autoMergeLevel1 from "reduxjs-toolkit-persist/lib/stateReconciler/autoMergeLevel1";
 import {
   FLUSH,
   REHYDRATE,
@@ -27,23 +27,19 @@ const middleware = [
 ];
 
 const persistConfig = {
-  key: 'pokedex',
+  key: "pokedex",
   version: 1,
   storage,
   stateReconciler: autoMergeLevel1,
 };
 
-const _persistedReducer = persistCombineReducers(
-  persistConfig,
-  {
-    pokemon: pokemonReducer,
-  },
-);
-
+const _persistedReducer = persistCombineReducers(persistConfig, {
+  pokemon: pokemonReducer,
+});
 
 export const store = configureStore({
   reducer: _persistedReducer,
-  middleware: (getDefaultMiddleware)=>
+  middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({ serializableCheck: false }),
 });
 

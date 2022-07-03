@@ -8,13 +8,9 @@ export const addFavoritePokemonSuccess = createAction(
 export const addFavoritePokemonError = createAction(
   "pokemon/addFavoritePokemonError"
 );
-export const removePokemonRequest = createAction(
-  "pokemon/removePokemonRequest"
-);
-export const removePokemonSuccess = createAction(
-  "pokemon/removePokemonSuccess"
-);
-export const removePokemonError = createAction("pokemon/removePokemonError");
+export const fetchPokemonRequest = createAction("pokemon/fetchPokemonRequest");
+export const fetchPokemonSuccess = createAction("pokemon/fetchPokemonSuccess");
+export const fetchPokemonError = createAction("pokemon/fetchPokemonError");
 
 export const deleteFavoritePokemonRequest = createAction(
   "pokemon/deleteFavoritePokemonRequest"
