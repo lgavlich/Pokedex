@@ -1,5 +1,4 @@
-const getAllPokemons = (state) => state.allPokemon.pokemon;
-const getFavoritePokemon = (state) => state.favoritePokemon.pokemon;
+const getFavoritePokemons = (state) => state.pokemon.favoritePokemon;
 
-const getVisiblePokemons = { getFavoritePokemon, getAllPokemons };
+const getVisiblePokemons = { getFavoritePokemons };
 export default getVisiblePokemons;

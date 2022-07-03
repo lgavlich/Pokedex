@@ -3,5 +3,6 @@
     "persistor",
     "pokemons",
     "Spiner"
-  ]
+  ],
+  "editor.formatOnSave": true
 }

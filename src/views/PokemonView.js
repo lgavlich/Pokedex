@@ -3,18 +3,23 @@ import { useParams, useNavigate } from "react-router-dom";
 import { getPokemon } from "../services/pokemon-api";
 import getPokemonImage from "../utils/getPokemonImage";
 import pokemonsOperations from "../redux/pokemon-operations";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import getVisiblePokemons from "../redux/pokemon-selector";
+import { deleteFavoritePokemonSuccess } from "../redux/pokemon-actions";
 
 import s from "./PokemonView.module.css";
 
 function PokemonView() {
   const { name: PokemonName } = useParams();
+
   const [pokemon, setPokemon] = useState(null);
+
+  const [isPokemonFavorite, setIsPokemonFavorite] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  // const pokemons = useSelector(getAllPokemons())
-  // console.log(pokemons);
+ 
 
+  const favoritePokemons = useSelector(getVisiblePokemons.getFavoritePokemons);
   useEffect(() => {
     async function fetchData() {
       const { id, weight, height, name, types, stats, sprites } =
@@ -31,9 +36,22 @@ function PokemonView() {
     }
     fetchData();
   }, [PokemonName]);
+  useEffect(() => {
+    const isFavorite = pokemon
+      ? favoritePokemons.find((el) => el.id === pokemon.id)
+      : false;
+    if (isFavorite) {
+      setIsPokemonFavorite(true);
+      return;
+    }
+    setIsPokemonFavorite(false);
+  }, [favoritePokemons, pokemon]);
 
-  const addFavorite = (id) => {
-    dispatch(pokemonsOperations.addFavoritePokemon(id));
+  const addFavorite = (pokemon) => {
+    dispatch(pokemonsOperations.addFavoritePokemon(pokemon));
+  };
+  const removeFromFavorite = (id) => {
+    dispatch(deleteFavoritePokemonSuccess(id));
   };
   return (
     <>
@@ -63,7 +81,7 @@ function PokemonView() {
               <div>
                 Types:
                 {pokemon.types.map(({ type }) => (
-                  <div id="pokemon-type" className={`${type.name}`}>
+                  <div key={type.name} className={`${type.name}`}>
                     {type.name}
                   </div>
                 ))}
@@ -86,9 +104,18 @@ function PokemonView() {
                 );
               })}
             </div>
-            <button type="button" onClick={() => addFavorite(pokemon?.id)}>
-              add favorite
-            </button>
+            {isPokemonFavorite ? (
+              <button className={s.delete}
+                type="button"
+                onClick={() => removeFromFavorite(pokemon.id)}
+              >
+                delete
+              </button>
+            ) : (
+              <button className={s.add} type="button" onClick={() => addFavorite(pokemon)}>
+               add
+              </button>
+            )}
           </div>
         </div>
       )}

@@ -14,7 +14,7 @@ export default function App() {
       <Routes>
         <Route path="/" exact element={<HomeView />} />
         <Route path="/pokemon/:name" element={<PokemonView />} />
-        <Route path="/pokemon/:id" element={<FavoritePokemonView />} />
+        <Route path="/favorite" element={<FavoritePokemonView />} />
       </Routes>
     </>
   );
