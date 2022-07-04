@@ -38,16 +38,16 @@ function HomeView() {
   return (
     <section>
       <InfiniteScroll
-        dataLength={pokemons.length}
+        dataLength={pokemons?.length}
         next={fetchData}
         hasMore={morePokemon}
         loader={
-          <div className="mb-4 d-flex justify-content-center align-item-center"></div>
+          <div className="mb-4 d-flex justify-content-center align-item-center"/>
         }
       >
         <Row>
           {pokemons.map((pokemon) => (
-            <PokemonCard key={pokemon.id} pokemon={pokemon} />
+            <PokemonCard key={pokemon?.id} pokemon={pokemon} />
           ))}
         </Row>
       </InfiniteScroll>

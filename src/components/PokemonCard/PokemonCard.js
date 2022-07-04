@@ -5,13 +5,12 @@ import s from "./PokemonCard.module.css";
 function PokemonCard({ pokemon }) {
   const navigate = useNavigate();
 
-  const elTypes = pokemon.types.map((typesInfo) => typesInfo.type.name);
-  
-  
+  const elTypes = pokemon?.types?.map((typesInfo) => typesInfo.type.name);
+
 
   return (
     <div
-      className={s.card}
+      className={s?.card}
       onClick={() => navigate(`/pokemon/${pokemon.name}`)}
     >
       <img
@@ -23,10 +22,9 @@ function PokemonCard({ pokemon }) {
         }
         alt={`${pokemon.name}`}
       />
-      <h2 className={s.pokemon_name}>{`${pokemon.id}. ${pokemon.name}`}</h2>
-      <p className={s.pokemon_title}>{`${elTypes.join(" | ")}`}</p>
-      <div className={s.Container}>
-       
+      <h2 className={s?.pokemon_name}>{`${pokemon?.id}. ${pokemon?.name}`}</h2>
+      <p className={s?.pokemon_title}>{`${elTypes?.join(" | ")}`}</p>
+      <div className={s?.Container}>
       </div>
     </div>
   );
